@@ -8,4 +8,6 @@ router.route('/').post(createUser).put(authMiddleware);
 
 router.route('/login').post(login);
 
+router.route('/me').get(authMiddleware, getSingleUser);
+
 module.exports = router;
