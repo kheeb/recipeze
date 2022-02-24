@@ -3,4 +3,7 @@ const { getSingleUser, createUser, login } = require('../../controllers/user-con
 
 const { authMiddleware } = require('../../utils/auth');
 
+// TODO: Add controller for adding recipe to put
+router.route('/').post(createUser).put(authMiddleware);
+
 module.exports = router;
