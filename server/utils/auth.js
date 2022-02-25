@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 // set token secret and expiration date
-const secret = 'mysecretsshhhhh';
+const secret = process.env.JWT_SECRET;
 const expiration = '2h';
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
       // return res.status(400).json({ message: 'You have no token!' });
       return req
     }
-  
+
     // verify token and get user data out of it
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
@@ -28,7 +28,7 @@ module.exports = {
 
     }
 return req
- 
+
   },
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };
