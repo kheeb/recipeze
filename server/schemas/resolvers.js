@@ -1,5 +1,6 @@
 const { User,  } = require("../models");
 const { signToken } = require("../utils/auth");
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -17,21 +18,21 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, { email, password }) => {
-      const profile = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-      if (!profile) {
+      if (!user) {
         throw new AuthenticationError("No profile with this email found!");
       }
 
-      const correctPw = await profile.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
       }
 
-      const token = signToken(profile);
+      const token = signToken(user);
 
-      return { token, profile };
+      return { token, user };
     },
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -57,7 +58,7 @@ const resolvers = {
       if(context.user) {
         const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $pull: { savedBooks: { recipeId: recipe=Id } } },
+            { $pull: { saved: { recipeId: recipeId } } },
             { new: true }
         );
 
@@ -67,5 +68,8 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
     },
   },
+  // updateDay: async (parent,{day,mealTimr},context)=>{
+  
+  // }
 };
 module.exports = resolvers;
