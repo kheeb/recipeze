@@ -35,10 +35,12 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-  async saveRecipe({ user, body }, res) {
+  // TODO: Change params to user once insomnia testing is complete
+  async saveRecipe({ params, body }, res) {
     try {
       const updatedUser = await User.findOneAndUpdate(
-        { _id: user._id },
+        // TODO: Change params to user once insomnia testing is complete
+        { _id: params.id },
         { $addToSet: { savedRecipes: body } },
         { new: true, runValidators: true }
       );
