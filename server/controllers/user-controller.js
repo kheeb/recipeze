@@ -35,4 +35,20 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
+  async saveRecipe({ user, body }, res) {
+    try {
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: user._id },
+        { $addToSet: { savedRecipes: body } },
+        { new: true, runValidators: true }
+      );
+
+      (!updatedUser)
+        ? res.status(404).json({ message: "No user found with this id." })
+        : res.status(200).json(updatedUser);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json(err);
+    }
+  }
 };
