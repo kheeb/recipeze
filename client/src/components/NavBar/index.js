@@ -1,3 +1,7 @@
+import {Navbar, Container, Nav, NavDropdown} from "react-bootstrap";
+
+export default function navBar() {
+return (
 <Navbar bg="light" expand="lg">
   <Container>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -17,3 +21,4 @@
     <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
   </Container>
 </Navbar>
+)}

@@ -8,6 +8,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import navBar from './components/NavBar/index';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -39,6 +40,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <navBar/>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
 
         </div>
