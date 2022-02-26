@@ -12,16 +12,24 @@ const typeDefs = gql`
     label: String!
     image: String
     recipeId: String!
-    ingredients:[String]
-    link: String
+    source:String
+    url: String
+    yield:Int
+    dietLabels:[String]
+    healthLabel:[String]
+    cautions:[String]
+    ingredients:[Ingredient]
+    calories:Int
+    cuisineType:[String]
+    mealType:[String]
+    dishType:[String]
     days:[String]
-    mealTime:[String]
   }
   type Ingredient{
     text:String!
     quantity:Int,
     measure:String
-
+    weight:Int
   }
 
   type Auth {
@@ -29,15 +37,28 @@ const typeDefs = gql`
     user: User
   }
     input RecipeInput{
-      label: [String]
+      label: String!
     image: String
-    recipeId: ID!
+    recipeId: String!
+    source:String
+    url: String
+    yield:Int
+    dietLabels:[String]
+    healthLabel:[String]
+    cautions:[String]
     ingredients:[IngredientInput]
+    calories:Int
+    cuisineType:[String]
+    mealType:[String]
+    dishType:[String]
+    days:[String]
   }
   input IngredientInput{
     text:String!
     quantity:Int,
     measure:String
+    weight:Int
+
   }
   type Query {
     users: [User]
@@ -47,7 +68,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    saveRecipe(recipeToSave: RecipeInput!):User
+    saveRecipe(recipe: RecipeInput!):User
     removeRecipe(recipeId: String): User
   }
 
