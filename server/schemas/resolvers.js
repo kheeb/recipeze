@@ -40,12 +40,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    saveRecipe: async (parent, { recipeToSave }, context) => {
-      console.log(recipeToSave);
+    saveRecipe: async (parent, { recipe }, context) => {
+      console.log(recipe);
       try {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { savedRecipes: recipeToSave } },
+          // For Testing
+          // { _id:"621846e1207564050604831a" },
+
+          { $push: { savedRecipes: recipe } },
           { new: true, runValidators: true }
         );
         console.log(updatedUser);
