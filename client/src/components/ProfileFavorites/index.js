@@ -17,7 +17,7 @@ function favoritesCarousel() {
           <h3>{recipeName}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
-              Get Recipe
+              View Recipe
             </Button>
           </div>
         </Carousel.Caption>
@@ -28,7 +28,7 @@ function favoritesCarousel() {
           <h3>{recipeName}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
-              Get Recipe
+              View Recipe
             </Button>
           </div>
         </Carousel.Caption>
@@ -39,7 +39,7 @@ function favoritesCarousel() {
           <h3>{recipeName}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
-              Get Recipe
+              View Recipe
             </Button>
           </div>
         </Carousel.Caption>
