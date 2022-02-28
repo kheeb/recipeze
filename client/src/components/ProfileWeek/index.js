@@ -12,10 +12,10 @@ function ProfileWeekCarousel() {
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
-        <img className="d-block w-100" src={recipeImg} alt="First slide" />
+        <img className="d-block w-100" src={image} alt="First slide" />
         <Carousel.Caption>
         <h5>Sunday</h5>
-          <h3>{recipeName}</h3>
+          <h3>{label}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
               View Recipe
@@ -24,10 +24,10 @@ function ProfileWeekCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={recipeImg} alt="Second slide" />
+        <img className="d-block w-100" src={image} alt="Second slide" />
         <Carousel.Caption>
         <h5>Monday</h5>
-          <h3>{recipeName}</h3>
+          <h3>{label}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
               View Recipe
@@ -36,10 +36,10 @@ function ProfileWeekCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={recipeImg} alt="Third slide" />
+        <img className="d-block w-100" src={image} alt="Third slide" />
         <Carousel.Caption>
         <h5>Tuesday</h5>
-          <h3>{recipeName}</h3>
+          <h3>{label}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
               View Recipe
@@ -48,10 +48,10 @@ function ProfileWeekCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={recipeImg} alt="First slide" />
+        <img className="d-block w-100" src={image} alt="First slide" />
         <Carousel.Caption>
         <h5>Wednesday</h5>
-          <h3>{recipeName}</h3>
+          <h3>{label}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
               View Recipe
@@ -60,10 +60,10 @@ function ProfileWeekCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={recipeImg} alt="First slide" />
+        <img className="d-block w-100" src={image} alt="First slide" />
         <Carousel.Caption>
         <h5>Thursday</h5>
-          <h3>{recipeName}</h3>
+          <h3>{label}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
               View Recipe
@@ -72,10 +72,10 @@ function ProfileWeekCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={recipeImg} alt="First slide" />
+        <img className="d-block w-100" src={image} alt="First slide" />
         <Carousel.Caption>
         <h5>Friday</h5>
-          <h3>{recipeName}</h3>
+          <h3>{label}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
               View Recipe
@@ -84,10 +84,10 @@ function ProfileWeekCarousel() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img className="d-block w-100" src={recipeImg} alt="First slide" />
+        <img className="d-block w-100" src={image} alt="First slide" />
         <Carousel.Caption>
         <h5>Saturday</h5>
-          <h3>{recipeName}</h3>
+          <h3>{label}</h3>
           <div className="d-grid gap-2">
             <Button variant="primary" size="lg">
               View Recipe
