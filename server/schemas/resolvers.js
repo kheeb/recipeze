@@ -72,7 +72,7 @@ const resolvers = {
     },
   },
   // updateDay: async (parent,{day,mealTimr},context)=>{
-  
+
   // }
 };
 module.exports = resolvers;
