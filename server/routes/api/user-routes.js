@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const {
+  getMe,
   createUser,
-  getSingleUser,
-  saveBook,
-  deleteBook,
+  loginUser,
+  saveRecipe,
+  deleteRecipe,
   login,
 } = require('../../controllers/user-controller');
 

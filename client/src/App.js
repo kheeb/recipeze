@@ -7,8 +7,9 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import { SearchRecipes, SavedRecipes } from './pages';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -51,6 +52,8 @@ function App() {
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
           <button onClick={getRecipes}>Search</button>
         </div>
+        <Route exact path = "/" component = {SearchRecipes}/>
+
       </Router>
     </ApolloProvider>
   );

@@ -1,46 +1,59 @@
-export const getAllMatchups = () => {
-  return fetch('/api/matchup', {
-    method: 'GET',
+// route to get logged in user's info (needs the token)
+export const getMe = (token) => {
+  return fetch('/api/users/me', {
     headers: {
       'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
     },
   });
 };
 
-export const createMatchup = (matchupData) => {
-  return fetch('/api/matchup', {
+// create new account
+export const createUser = (userData) => {
+  return fetch('/api/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(matchupData),
+    body: JSON.stringify(userData),
   });
 };
 
-export const getMatchup = (matchupId) => {
-  return fetch(`/api/matchup/${matchupId}`, {
-    method: 'GET',
+// log in
+export const loginUser = (userData) => {
+  return fetch('/api/users/login', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(userData),
   });
 };
 
-export const createVote = (voteData) => {
-  return fetch(`/api/matchup/${voteData}`, {
+// save recipe data for a logged in user
+export const saveRecipe = (recipeData, token) => {
+  return fetch('/api/users', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(voteData),
+    body: JSON.stringify(recipeData),
   });
 };
 
-export const getAllTech = () => {
-  return fetch('/api/tech', {
-    method: 'GET',
+// remove saved recipe data for a logged in user
+export const deleteRecipe = (recipeId, token) => {
+  return fetch(`/api/users/books/${recipeId}`, {
+    method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
     },
   });
+};
+
+// make a search 
+// 
+export const searchRecipes = (query) => {
+  return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
 };

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Carousel, Button } from "react-bootstrap";
 
-function ProfileWeekCarousel() {
+function ProfileWeekCarousel({image, label}) {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
