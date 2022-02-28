@@ -65,7 +65,7 @@ const SavedRecipes = () => {
     return <h2>LOADING...</h2>;
   }
 
-
+//Carousel
 function favoritesCarousel() {
   const [index, setIndex] = useState(0);
 
