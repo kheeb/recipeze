@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProfileFavorites from "../components/ProfileFavorites";
 import ProfileWeek from "../components/ProfileWeek";
-import { getMe, deleteRecipe } from "../utils/API";
+import { getMe, deleteRecipe } from "../utils/api";
 import Auth from "../utils/auth";
 import { removeRecipeId } from "../utils/localStorage";
 
@@ -72,3 +72,5 @@ const SavedRecipes = () => {
     </div>
   );
 };
+
+export default SavedRecipes;
