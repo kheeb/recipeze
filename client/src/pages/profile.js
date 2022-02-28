@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import ProfileFavorites from '../components/ProfileFavorites';
-import { getMe, deleteRecipe } from '../utils/API';
-import Auth from '../utils/auth';
-import { removeRecipeId } from '../utils/localStorage';
+import ProfileFavorites from "../components/ProfileFavorites";
+import ProfileWeek from "../components/ProfileWeek";
+import { getMe, deleteRecipe } from "../utils/API";
+import Auth from "../utils/auth";
+import { removeRecipeId } from "../utils/localStorage";
 
 const SavedRecipes = () => {
   const [userData, setUserData] = useState({});
@@ -22,7 +23,7 @@ const SavedRecipes = () => {
         const response = await getMe(token);
 
         if (!response.ok) {
-          throw new Error('something went wrong!');
+          throw new Error("something went wrong!");
         }
 
         const user = await response.json();
@@ -47,7 +48,7 @@ const SavedRecipes = () => {
       const response = await deleteRecipe(recipeId, token);
 
       if (!response.ok) {
-        throw new Error('something went wrong!');
+        throw new Error("something went wrong!");
       }
 
       const updatedUser = await response.json();
@@ -65,6 +66,9 @@ const SavedRecipes = () => {
   }
 
   return (
-    <ProfileFavorites/>
+    <div>
+      <ProfileFavorites />
+      <ProfileWeek />
+    </div>
   );
-}
+};
