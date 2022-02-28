@@ -1,6 +1,9 @@
 {
   "name": "reciPeZe",
   "version": "1.0.0",
+  "engines": {
+    "node": "17.4.0"
+  },
   "description": "",
   "main": "server/server.js",
   "scripts": {
@@ -15,5 +18,5 @@
   "devDependencies": {
     "concurrently": "^5.3.0"
   }
-  
+
 }
