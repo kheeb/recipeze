@@ -74,7 +74,8 @@ const SearchRecipes = () => {
       // if recipe successfully saves to user's account, save recipe id to state
       setSavedRecipeIds([...savedRecipeIds, recipeToSave.recipeId]);
     } catch (err) {
-      console.error(err);
+      console.log(JSON.parse(JSON.stringify(err)))
+      // console.error(err);
     }
   };
 

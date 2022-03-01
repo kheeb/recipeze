@@ -39,19 +39,19 @@ const typeDefs = gql`
     input RecipeInput{
       label: String!
     image: String
-    recipeId: ID!
-    source:String
+    recipeId: String!
+    # source:String
     url: String
-    yield:Int
-    dietLabels:[String]
-    healthLabel:[String]
-    cautions:[String]
-    ingredients:[IngredientInput]
-    calories:Int
-    cuisineType:[String]
-    mealType:[String]
-    dishType:[String]
-    days:[String]
+    # yield:Int
+    # dietLabels:[String]
+    # healthLabel:[String]
+    # cautions:[String]
+    # ingredients:[Ingredient]
+    # calories:Int
+    # cuisineType:[String]
+    # mealType:[String]
+    # dishType:[String]
+    # days:[String]
   }
 
   input IngredientInput{
