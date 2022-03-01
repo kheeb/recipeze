@@ -93,7 +93,7 @@ const SearchRecipes = () => {
         <Button variant="outline-success" type="submit">Go!</Button>
       </Form>
       {searchedRecipes.map(data => {
-        return <RecipeCards key={data.recipeId} recipeId={data.recipeId} recipeName={data.recipeName} recipeLink={data.recipeLink}/>
+        return <RecipeCards key={data.recipeId} recipeId={data.recipeId} recipeName={data.recipeName} recipeLink={data.recipeLink} photoLink={data.photoLink}/>
       })}
     <h1> "recipes here!" </h1>
     </div>
