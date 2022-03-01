@@ -5,7 +5,7 @@ import { Carousel, Button } from "react-bootstrap";
 
 
 //Carousel
-function favoritesCarousel() {
+function FavoritesCarousel({image, label}) {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
@@ -51,4 +51,4 @@ function favoritesCarousel() {
   );
 }
 
-export default favoritesCarousel;
+export default FavoritesCarousel;

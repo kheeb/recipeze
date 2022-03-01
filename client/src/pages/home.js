@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RecipeCards from '../components/RecipeCards';
 import Auth from "../utils/auth";
-import { saveRecipe, searchRecipes } from "../utils/API";
+import { saveRecipe, searchRecipes } from "../utils/api";
 import { saveRecipeIds, getSavedRecipeIds } from "../utils/localStorage";
 
 const SearchRecipes = () => {
@@ -44,7 +44,7 @@ const SearchRecipes = () => {
         image: recipe.volumeInfo.imageLinks?.thumbnail || "",
       }));
 
-      setSearchedRecipe(recipeData);
+      // setSearchedRecipe(recipeData);
       setSearchInput("");
     } catch (err) {
       console.error(err);
@@ -82,6 +82,7 @@ const SearchRecipes = () => {
   return (
     <div>
     <RecipeCards/>
+    <h1> "recipes here!" </h1>
     </div>
   );
 
