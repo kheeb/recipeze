@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
 import RecipeCards from "../components/RecipeCards";
 import Auth from "../utils/auth";
-import { deleteRecipe, searchRecipes } from "../utils/api";
+import { searchRecipes } from "../utils/api";
 import { saveRecipeIds, getSavedRecipeIds } from "../utils/localStorage";
 import { v4 as uuidv4 } from "uuid";
 import { useMutation } from '@apollo/client';
@@ -16,7 +16,7 @@ const SearchRecipes = () => {
   const [searchInput, setSearchInput] = useState("");
 
   // create state to hold saved RecipeId values
-  const [savedRecipeIds, setSavedRecipeIds] = useState(getSavedRecipeIds());
+  const [savedRecipeIds] = useState(getSavedRecipeIds());
 
   // set up useEffect hook to save `savedRecipeIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
