@@ -1,11 +1,11 @@
 //Recipe Cards
 import { Card, Button, Form } from 'react-bootstrap';
 
-export default function recipeCard({ recipeName, photoLink, altDesc, loggedIn, recipeSaved }) {
+export default function recipeCard({ recipeName, photoLink, loggedIn, recipeSaved }) {
   return (
     <Card>
       <Card.Title>{recipeName}</Card.Title>
-      <Card.Img src={photoLink} alt={altDesc} />
+      <Card.Img src={photoLink} alt={`${recipeName} photo`} />
       <Card.Body>
         <Button href={(!recipeSaved) ? 'HREF for saving to user' : 'HREF for updating existing saved recipe'} className={(!loggedIn) ? 'invisible' : 'visible'}>Save</Button>
       </Card.Body>
