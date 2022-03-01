@@ -8,6 +8,7 @@ import RecipeCards from '../components/RecipeCards';
 import Auth from "../utils/auth";
 import { saveRecipe, searchRecipes } from "../utils/api";
 import { saveRecipeIds, getSavedRecipeIds } from "../utils/localStorage";
+import { v4 as uuidv4 } from 'uuid';
 
 const SearchRecipes = () => {
   // create state for holding returned google api data
@@ -37,6 +38,7 @@ const SearchRecipes = () => {
       const data = response.hits;
 
       const recipeData = data.map((recipe) => ({
+        recipeId: uuidv4(),
         recipeName: recipe.recipe.label,
         photoLink: recipe.recipe.url,
       }));
