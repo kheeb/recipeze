@@ -52,10 +52,6 @@ const SearchRecipes = () => {
 
   // create function to handle saving a recipe to our database
   const handleSaveRecipe = async (recipeId, recipeName, photoLink, recipeLink) => {
-    // find the recipe in `searchedRecipes` state by the matching id
-    // const recipeToSave = searchedRecipes.find(
-    //   (recipe) => recipe.recipeId === recipeId
-    // );
     const recipeToSave = {
       recipeId,
       label: recipeName,
@@ -85,7 +81,6 @@ const SearchRecipes = () => {
       // setSavedRecipeIds([...savedRecipeIds, recipeToSave.recipeId]);
     } catch (err) {
       console.log(JSON.parse(JSON.stringify(err)))
-      // console.error(err);
     }
   };
 
@@ -116,7 +111,6 @@ const SearchRecipes = () => {
           handleSave={handleSaveRecipe}
         />
       )})}
-      <h1> "recipes here!" </h1>
     </div>
   );
 };
