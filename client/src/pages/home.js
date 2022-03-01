@@ -58,7 +58,6 @@ const SearchRecipes = () => {
       image: photoLink,
       url: recipeLink
     }
-    console.log(recipeToSave);
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -72,7 +71,7 @@ const SearchRecipes = () => {
           recipe:recipeToSave
         }
       });
-      console.log(response);
+
       if (!response.ok) {
         throw new Error("something went wrong!");
       }

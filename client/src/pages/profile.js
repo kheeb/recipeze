@@ -12,11 +12,9 @@ import { useMutation } from '@apollo/client';
 
 const SavedRecipes = () => {
   const {loading,data} = useQuery(GET_ME);
-  // console.log(data);
   const [removeRecipe] = useMutation(REMOVE_RECIPE);
 
   const userData = data?.me || [];
-// console.log(userData);
   const handleDeleteRecipe = async (recipeId) => {
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -24,13 +22,13 @@ const SavedRecipes = () => {
     if (!token) {
       return false;
     }
-console.log(recipeId);
+
     try {
       const {data} = await removeRecipe({
         variables: { recipeId }
 
       });
-      console.log({data});
+
       if(!data){
         throw new Error('something went wrong!');
       }
@@ -39,7 +37,6 @@ console.log(recipeId);
     } catch (err) {
       console.error(JSON.parse(JSON.stringify(err)));
     }
-    // window.location.reload()
   };
 
   // if data isn't here yet, say so
