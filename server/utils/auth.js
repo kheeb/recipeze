@@ -2,14 +2,14 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config()
 // set token secret and expiration date
 const secret = process.env.JWT_SECRET;
-console.log(secret)
+// console.log(secret)
 const expiration = '2h';
 
 module.exports = {
   // function for our authenticated routes
   authMiddleware: function ({req}) {
     // allows token to be sent via  req.query or headers
-    let token = req.query.token || req.headers.authorization;
+    let token = req.query.token || req.headers.authorization|| req.body.token;
     // ["Bearer", "<tokenvalue>"]
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
