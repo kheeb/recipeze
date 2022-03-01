@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from "react";
+import {
+  Button,
+  Form,
+  FormControl,
+} from "react-bootstrap";
 import RecipeCards from '../components/RecipeCards';
 import Auth from "../utils/auth";
 import { saveRecipe, searchRecipes } from "../utils/api";
@@ -29,12 +34,9 @@ const SearchRecipes = () => {
 
     try {
       const response = await searchRecipes(searchInput);
+      console.log(response)
 
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
-
-      const { items } = await response.json();
+      const { items } = response;
 
       const recipeData = items.map((recipe) => ({
         recipeId: recipe.id,
@@ -81,6 +83,17 @@ const SearchRecipes = () => {
 
   return (
     <div>
+      <Form className="d-flex" onSubmit={handleFormSubmit}>
+        <FormControl
+          type="search"
+          name="queryField"
+          placeholder="Recipe Search..."
+          className="me-2"
+          aria-label="Search"
+          onChange={e => setSearchInput(e.target.value)}
+        />
+        <Button variant="outline-success" type="submit">Go!</Button>
+      </Form>
     <RecipeCards/>
     <h1> "recipes here!" </h1>
     </div>
