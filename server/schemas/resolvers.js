@@ -9,10 +9,8 @@ const resolvers = {
     user: async (parent, { id }) => {
       return await User.findById(id).populate("recipes");
     },
-  
+
     me: async (parent, args, context) => {
-      console.log('Hello World')
-      console.log(context.user)
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("recipes");
       }
@@ -47,9 +45,7 @@ const resolvers = {
       console.log(recipe);
       try {
         const updatedUser = await User.findOneAndUpdate(
-          // { _id: context.user._id },
-          // For Testing
-          { _id:"621846e1207564050604831a" },
+          { _id: context.user._id },
 
           { $push: { savedRecipes: recipe } },
           { new: true, runValidators: true }
@@ -61,10 +57,11 @@ const resolvers = {
       }
     },
     removeRecipe: async (parent, { recipeId }, context) => {
+      console.log(context.user)
       if(context.user) {
         const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
-            { $pull: { saved: { recipeId: recipeId } } },
+            { $pull: { savedRecipes: { recipeId: recipeId } } },
             { new: true }
         );
 

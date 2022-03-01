@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {
-  Button,
-  Form,
-  FormControl,
-} from "react-bootstrap";
-import RecipeCards from '../components/RecipeCards';
+import { Button, Form, FormControl } from "react-bootstrap";
+import RecipeCards from "../components/RecipeCards";
 import Auth from "../utils/auth";
-import { saveRecipe, searchRecipes } from "../utils/api";
+import { deleteRecipe, searchRecipes } from "../utils/api";
 import { saveRecipeIds, getSavedRecipeIds } from "../utils/localStorage";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import { useMutation } from '@apollo/client';
 
+import { SAVE_RECIPE } from "../utils/mutations";
 const SearchRecipes = () => {
+  const [addSavedRecipe] = useMutation(SAVE_RECIPE);
   // create state for holding returned google api data
   const [searchedRecipes, setSearchedRecipes] = useState([]);
   // create state for holding our search field data
@@ -37,7 +36,7 @@ const SearchRecipes = () => {
       const response = await searchRecipes(searchInput);
       const data = response.hits;
 
-      const recipeData = data.map(({recipe}) => ({
+      const recipeData = data.map(({ recipe }) => ({
         recipeId: uuidv4(),
         recipeName: recipe.label,
         recipeLink: recipe.url,
@@ -52,12 +51,14 @@ const SearchRecipes = () => {
   };
 
   // create function to handle saving a recipe to our database
-  const handleSaveRecipe = async (recipeId) => {
-    // find the recipe in `searchedRecipes` state by the matching id
-    const recipeToSave = searchedRecipes.find(
-      (recipe) => recipe.recipeId === recipeId
-    );
-
+  const handleSaveRecipe = async (recipeId, recipeName, photoLink, recipeLink) => {
+    const recipeToSave = {
+      recipeId,
+      label: recipeName,
+      image: photoLink,
+      url: recipeLink
+    }
+    console.log(recipeToSave);
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -66,16 +67,20 @@ const SearchRecipes = () => {
     }
 
     try {
-      const response = await saveRecipe(recipeToSave, token);
-
+      const response = await addSavedRecipe({
+        variables: {
+          recipe:recipeToSave
+        }
+      });
+      console.log(response);
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
 
       // if recipe successfully saves to user's account, save recipe id to state
-      setSavedRecipeIds([...savedRecipeIds, recipeToSave.recipeId]);
+      // setSavedRecipeIds([...savedRecipeIds, recipeToSave.recipeId]);
     } catch (err) {
-      console.error(err);
+      console.log(JSON.parse(JSON.stringify(err)))
     }
   };
 
@@ -88,17 +93,26 @@ const SearchRecipes = () => {
           placeholder="Recipe Search..."
           className="me-2"
           aria-label="Search"
-          onChange={e => setSearchInput(e.target.value)}
+          onChange={(e) => setSearchInput(e.target.value)}
         />
-        <Button variant="outline-success" type="submit">Go!</Button>
+        <Button variant="outline-success" type="submit">
+          Go!
+        </Button>
       </Form>
       {searchedRecipes.map(data => {
-        return <RecipeCards key={data.recipeId} recipeId={data.recipeId} recipeName={data.recipeName} recipeLink={data.recipeLink} photoLink={data.photoLink}/>
-      })}
-    <h1> "recipes here!" </h1>
+        return (
+        <RecipeCards
+          key={data.recipeId}
+          recipeId={data.recipeId}
+          recipeName={data.recipeName}
+          recipeLink={data.recipeLink}
+          photoLink={data.photoLink}
+          loggedIn={Auth.loggedIn()}
+          handleSave={handleSaveRecipe}
+        />
+      )})}
     </div>
   );
-
 };
 
 export default SearchRecipes;

@@ -1,6 +1,6 @@
 import React from "react";
-import ProfileFavorites from "../components/ProfileFavorites";
-import ProfileWeek from "../components/ProfileWeek";
+// import ProfileFavorites from "../components/ProfileFavorites";
+// import ProfileWeek from "../components/ProfileWeek";
 import Auth from "../utils/auth";
 import { useQuery } from '@apollo/client';
 import { Container, Card, Button } from 'react-bootstrap';
@@ -12,33 +12,34 @@ import { useMutation } from '@apollo/client';
 
 const SavedRecipes = () => {
   const {loading,data} = useQuery(GET_ME);
-  console.log(data);
+  // console.log(data);
   const [removeRecipe] = useMutation(REMOVE_RECIPE);
 
   const userData = data?.me || [];
-console.log(userData);
+// console.log(userData);
   const handleDeleteRecipe = async (recipeId) => {
-    
+
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
       return false;
     }
-
+console.log(recipeId);
     try {
       const {data} = await removeRecipe({
         variables: { recipeId }
-        
+
       });
+      console.log({data});
       if(!data){
         throw new Error('something went wrong!');
       }
-      // upon success, remove book's id from localStorage
+      // upon success, remove recipe's id from localStorage
       removeRecipeId(recipeId);
     } catch (err) {
       console.error(JSON.parse(JSON.stringify(err)));
     }
-    window.location.reload()
+    // window.location.reload()
   };
 
   // if data isn't here yet, say so
@@ -50,7 +51,7 @@ console.log(userData);
     <div>
        <div fluid className='text-light bg-dark'>
         <Container>
-          <h1>Viewing saved books!</h1>
+          <h1>My saved recipes!</h1>
         </Container>
       </div>
       <Container>
@@ -67,7 +68,7 @@ console.log(userData);
                 <Card.Body>
                   <Card.Title>{recipe.label}</Card.Title>
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteRecipe(recipe.recipeId)}>
-                    Delete this Book!
+                    Delete this recipe!
                   </Button>
                 </Card.Body>
               </Card>

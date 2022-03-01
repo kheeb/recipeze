@@ -25,42 +25,42 @@ const typeDefs = gql`
     # dishType:[String]
     # days:[String]
   }
-  type Ingredient{
-    text:String!
-    quantity:Int,
-    measure:String
-    weight:Int
-  }
+  # type Ingredient{
+  #   text:String!
+  #   quantity:Int,
+  #   measure:String
+  #   weight:Int
+  # }
 
   type Auth {
     token: ID!
     user: User
   }
     input RecipeInput{
-      label: String!
+    label: String!
     image: String
-    recipeId: ID!
-    source:String
+    recipeId: String!
+    # source:String
     url: String
-    yield:Int
-    dietLabels:[String]
-    healthLabel:[String]
-    cautions:[String]
-    ingredients:[IngredientInput]
-    calories:Int
-    cuisineType:[String]
-    mealType:[String]
-    dishType:[String]
-    days:[String]
+    # yield:Int
+    # dietLabels:[String]
+    # healthLabel:[String]
+    # cautions:[String]
+    # ingredients:[Ingredient]
+    # calories:Int
+    # cuisineType:[String]
+    # mealType:[String]
+    # dishType:[String]
+    # days:[String]
   }
 
-  input IngredientInput{
-    text:String!
-    quantity:Int,
-    measure:String
-    weight:Int
-
-  }
+  # input IngredientInput{
+  #   text:String!
+  #   quantity:Int,
+  #   measure:String
+  #   weight:Int
+# 
+  # }
   type Query {
     users: [User]
     user(id: ID!): User
