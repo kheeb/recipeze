@@ -3,23 +3,30 @@ import { gql } from "@apollo/client";
 export const GET_ME = gql`
   query me {
     me {
+      _id
       username
+      email
       savedRecipes {
         label
         image
         recipeId
-        source
+        # source
         url
-        yield
-        dietLabels
-        healthLabel
-        cautions
-        ingredients
-        calories
-        cuisineType
-        mealType
-        dishType
-        days
+        # yield
+        # dietLabels
+        # healthLabel
+        # cautions
+        # calories
+        # cuisineType
+        # mealType
+        # dishType
+        # days
+        # ingredients{
+        #   text
+        #   quantity
+        #  measure
+        #  weight
+        # }
       }
     }
   }

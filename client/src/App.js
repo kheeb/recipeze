@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import { SearchRecipes, SavedRecipes } from './pages';
 
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -43,6 +44,9 @@ function App() {
         {/* <div className="flex-column justify-center align-center min-100-vh bg-primary">
         </div> */}
         <Route exact path = "/" component = {SearchRecipes}/>
+        <Route exact path="/saved" component = {SavedRecipes}/>
+
+       
 
       </Router>
     </ApolloProvider>

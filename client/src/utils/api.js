@@ -44,7 +44,7 @@ export const saveRecipe = (recipeData, token) => {
 
 // remove saved recipe data for a logged in user
 export const deleteRecipe = (recipeId, token) => {
-  return fetch(`/api/users/books/${recipeId}`, {
+  return fetch(`/api/users/recipes/${recipeId}`, {
     method: 'DELETE',
     headers: {
       authorization: `Bearer ${token}`,

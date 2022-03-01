@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    _id: ID
+    _id: ID!
     username: String!
     email: String!
     password: String!
@@ -12,18 +12,18 @@ const typeDefs = gql`
     label: String!
     image: String
     recipeId: String!
-    source:String
+    # source:String
     url: String
-    yield:Int
-    dietLabels:[String]
-    healthLabel:[String]
-    cautions:[String]
-    ingredients:[Ingredient]
-    calories:Int
-    cuisineType:[String]
-    mealType:[String]
-    dishType:[String]
-    days:[String]
+    # yield:Int
+    # dietLabels:[String]
+    # healthLabel:[String]
+    # cautions:[String]
+    # ingredients:[Ingredient]
+    # calories:Int
+    # cuisineType:[String]
+    # mealType:[String]
+    # dishType:[String]
+    # days:[String]
   }
   type Ingredient{
     text:String!
@@ -39,7 +39,7 @@ const typeDefs = gql`
     input RecipeInput{
       label: String!
     image: String
-    recipeId: String!
+    recipeId: ID!
     source:String
     url: String
     yield:Int
@@ -53,6 +53,7 @@ const typeDefs = gql`
     dishType:[String]
     days:[String]
   }
+
   input IngredientInput{
     text:String!
     quantity:Int,
