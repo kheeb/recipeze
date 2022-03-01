@@ -36,7 +36,6 @@ const SavedRecipes = () => {
     getUserData();
   }, [userDataLength]);
 
-  // create function that accepts the Recipe's mongo _id value as param and deletes the book from the database
   const handleDeleteRecipe = async (recipeId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 

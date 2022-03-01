@@ -44,9 +44,9 @@ const resolvers = {
       console.log(recipe);
       try {
         const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
+          // { _id: context.user._id },
           // For Testing
-          // { _id:"621846e1207564050604831a" },
+          { _id:"621846e1207564050604831a" },
 
           { $push: { savedRecipes: recipe } },
           { new: true, runValidators: true }

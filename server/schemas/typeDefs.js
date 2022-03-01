@@ -39,7 +39,7 @@ const typeDefs = gql`
     input RecipeInput{
       label: String!
     image: String
-    recipeId: String!
+    recipeId: ID!
     source:String
     url: String
     yield:Int
@@ -53,6 +53,7 @@ const typeDefs = gql`
     dishType:[String]
     days:[String]
   }
+
   input IngredientInput{
     text:String!
     quantity:Int,

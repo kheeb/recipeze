@@ -4,7 +4,7 @@ import { Card, Button, Form } from 'react-bootstrap';
 // TODO: Replace desconstructed recipe keys with working keys and also replace connected keys in return section
 export default function recipeCard({ recipeName, photo, altDesc }) {
   return (
-    <Card>
+    <Card className='p-2 text-white bg-secondary m-1 p-4 w-50' style={{"width":'18rem'}}>
       <Card.Title>{recipeName}</Card.Title>
       <Card.Img src={photo} alt={altDesc} />
       <Card.Body>
