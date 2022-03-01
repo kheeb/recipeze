@@ -34,19 +34,13 @@ const SearchRecipes = () => {
 
     try {
       const response = await searchRecipes(searchInput);
-      console.log(response)
+      const data = response.hits;
 
-      const { items } = response;
-
-      const recipeData = items.map((recipe) => ({
-        recipeId: recipe.id,
-        authors: recipe.volumeInfo.authors || ["No author to display"],
-        title: recipe.volumeInfo.title,
-        description: recipe.volumeInfo.description,
-        image: recipe.volumeInfo.imageLinks?.thumbnail || "",
+      const recipeData = data.map((recipe) => ({
+        recipeName: recipe.recipe.label,
+        photoLink: recipe.recipe.url,
       }));
 
-      // setSearchedRecipe(recipeData);
       setSearchInput("");
     } catch (err) {
       console.error(err);
