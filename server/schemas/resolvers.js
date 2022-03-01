@@ -9,7 +9,7 @@ const resolvers = {
     user: async (parent, { id }) => {
       return await User.findById(id).populate("recipes");
     },
-  
+
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("recipes");
@@ -45,9 +45,7 @@ const resolvers = {
       console.log(recipe);
       try {
         const updatedUser = await User.findOneAndUpdate(
-          // { _id: context.user._id },
-          // For Testing
-          { _id:"621846e1207564050604831a" },
+          { _id: context.user._id },
 
           { $push: { savedRecipes: recipe } },
           { new: true, runValidators: true }

@@ -18,7 +18,7 @@ const SavedRecipes = () => {
   const userData = data?.me || [];
 // console.log(userData);
   const handleDeleteRecipe = async (recipeId) => {
-    
+
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -28,13 +28,13 @@ console.log(recipeId);
     try {
       const {data} = await removeRecipe({
         variables: { recipeId }
-        
+
       });
       console.log({data});
       if(!data){
         throw new Error('something went wrong!');
       }
-      // upon success, remove book's id from localStorage
+      // upon success, remove recipe's id from localStorage
       removeRecipeId(recipeId);
     } catch (err) {
       console.error(JSON.parse(JSON.stringify(err)));
@@ -68,7 +68,7 @@ console.log(recipeId);
                 <Card.Body>
                   <Card.Title>{recipe.label}</Card.Title>
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteRecipe(recipe.recipeId)}>
-                    Delete this Book!
+                    Delete this recipe!
                   </Button>
                 </Card.Body>
               </Card>
