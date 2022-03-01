@@ -5,9 +5,6 @@ import {
   Navbar,
   Nav,
   Container,
-  Button,
-  Form,
-  FormControl,
   Modal,
   Tab,
 } from "react-bootstrap";
@@ -55,15 +52,6 @@ function NavBar() {
                 </Nav.Link>
               )}
             </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Recipe Search..."
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Go!</Button>
-            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
