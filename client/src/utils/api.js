@@ -52,8 +52,18 @@ export const deleteRecipe = (recipeId, token) => {
   });
 };
 
-// make a search 
-// 
-export const searchRecipes = (query) => {
-  return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
+// make a search
+//
+export const searchRecipes = async (query) => {
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  const API_ID = process.env.REACT_APP_API_ID;
+
+  const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${API_ID}&app_key=${API_KEY}`);
+
+  if (!response.ok) {
+    throw new Error("something went wrong!");
+  }
+
+  const data = await response.json();
+  return data;
 };

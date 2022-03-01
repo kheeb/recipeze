@@ -5,9 +5,6 @@ import {
   Navbar,
   Nav,
   Container,
-  Button,
-  Form,
-  FormControl,
   Modal,
   Tab,
 } from "react-bootstrap";
@@ -19,16 +16,6 @@ import Auth from "../../utils/auth";
 
 function NavBar() {
   const [showModal, setShowModal] = useState(false);
-
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  const API_ID = process.env.REACT_APP_API_ID;
-
-  const getRecipes = async (event) => {
-    event.preventDefault();
-    const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${event.target.queryField.value}&app_id=${API_ID}&app_key=${API_KEY}`);
-    const data = await response.json();
-    console.log(data);
-  }
 
   return (
     <div className="NavBar">
@@ -65,16 +52,6 @@ function NavBar() {
                 </Nav.Link>
               )}
             </Nav>
-            <Form className="d-flex" onSubmit={getRecipes}>
-              <FormControl
-                type="search"
-                name="queryField"
-                placeholder="Recipe Search..."
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success" type="submit">Go!</Button>
-            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>

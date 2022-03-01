@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
+import {
+  Button,
+  Form,
+  FormControl,
+} from "react-bootstrap";
 import RecipeCards from '../components/RecipeCards';
 import Auth from "../utils/auth";
 import { saveRecipe, searchRecipes } from "../utils/api";
 import { saveRecipeIds, getSavedRecipeIds } from "../utils/localStorage";
+import { v4 as uuidv4 } from 'uuid';
 
 const SearchRecipes = () => {
   // create state for holding returned google api data
@@ -29,22 +35,16 @@ const SearchRecipes = () => {
 
     try {
       const response = await searchRecipes(searchInput);
+      const data = response.hits;
 
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
-
-      const { items } = await response.json();
-
-      const recipeData = items.map((recipe) => ({
-        recipeId: recipe.id,
-        authors: recipe.volumeInfo.authors || ["No author to display"],
-        title: recipe.volumeInfo.title,
-        description: recipe.volumeInfo.description,
-        image: recipe.volumeInfo.imageLinks?.thumbnail || "",
+      const recipeData = data.map(({recipe}) => ({
+        recipeId: uuidv4(),
+        recipeName: recipe.label,
+        recipeLink: recipe.url,
+        photoLink: recipe.image,
       }));
 
-      // setSearchedRecipe(recipeData);
+      setSearchedRecipes(recipeData);
       setSearchInput("");
     } catch (err) {
       console.error(err);
@@ -81,7 +81,20 @@ const SearchRecipes = () => {
 
   return (
     <div>
-    <RecipeCards/>
+      <Form className="d-flex" onSubmit={handleFormSubmit}>
+        <FormControl
+          type="search"
+          name="queryField"
+          placeholder="Recipe Search..."
+          className="me-2"
+          aria-label="Search"
+          onChange={e => setSearchInput(e.target.value)}
+        />
+        <Button variant="outline-success" type="submit">Go!</Button>
+      </Form>
+      {searchedRecipes.map(data => {
+        return <RecipeCards key={data.recipeId} recipeId={data.recipeId} recipeName={data.recipeName} recipeLink={data.recipeLink} photoLink={data.photoLink}/>
+      })}
     <h1> "recipes here!" </h1>
     </div>
   );
