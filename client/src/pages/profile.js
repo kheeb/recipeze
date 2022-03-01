@@ -3,9 +3,9 @@ import React from "react";
 // import ProfileWeek from "../components/ProfileWeek";
 import Auth from "../utils/auth";
 import { useQuery } from '@apollo/client';
-import { Container, Card, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { removeRecipeId } from '../utils/localStorage';
-
+import SavedRecipeCards from "../components/RecipeCards/index2";
 import { REMOVE_RECIPE } from '../utils/mutations';
 import{GET_ME} from '../utils/queries'
 import { useMutation } from '@apollo/client';
@@ -49,11 +49,6 @@ console.log(recipeId);
 
   return (
     <div>
-       <div fluid className='text-light bg-dark'>
-        <Container>
-          <h1>My saved recipes!</h1>
-        </Container>
-      </div>
       <Container>
         <h2>
           {userData.savedRecipes.length
@@ -63,15 +58,14 @@ console.log(recipeId);
         <div>
           {userData.savedRecipes.map((recipe) => {
             return (
-              <Card key={recipe.recipeId} border='dark'>
-                {recipe.image ? <Card.Img src={recipe.image} alt={`The cover for ${recipe.label}`} variant='top' /> : null}
-                <Card.Body>
-                  <Card.Title>{recipe.label}</Card.Title>
-                  <Button className='btn-block btn-danger' onClick={() => handleDeleteRecipe(recipe.recipeId)}>
-                    Delete this recipe!
-                  </Button>
-                </Card.Body>
-              </Card>
+              <SavedRecipeCards
+                key={recipe.recipeId}
+                recipeId={recipe.recipeId}
+                recipeName={recipe.label}
+                recipeLink={recipe.url}
+                photoLink={recipe.image}
+                handleDelete={handleDeleteRecipe}
+              />
             );
           })}
         </div>
