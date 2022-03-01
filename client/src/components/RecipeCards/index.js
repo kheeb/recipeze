@@ -7,7 +7,7 @@ export default function recipeCard({ recipeId, recipeName, recipeLink, photoLink
       <Card.Title>{recipeName}</Card.Title>
       <Card.Img src={photoLink} alt={`${recipeName} photo`}/>
       <Card.Body>
-        <Button onClick={handleSave} className={(!loggedIn) ? 'd-none' : ''}>Save</Button>
+        <Button onClick={() => handleSave(recipeId, recipeName, photoLink, recipeLink)} className={(!loggedIn) ? 'd-none' : ''}>Save</Button>
         <Button href={recipeLink} target='_blank'>Recipe Link</Button>
       </Card.Body>
       {/* <Form.Select className={(!loggedIn) ? 'invisible' : 'visible'}>
