@@ -37,12 +37,14 @@ const SearchRecipes = () => {
       const response = await searchRecipes(searchInput);
       const data = response.hits;
 
-      const recipeData = data.map((recipe) => ({
+      const recipeData = data.map(({recipe}) => ({
         recipeId: uuidv4(),
-        recipeName: recipe.recipe.label,
-        photoLink: recipe.recipe.url,
+        recipeName: recipe.label,
+        recipeLink: recipe.url,
+        photoLink: recipe.image,
       }));
 
+      setSearchedRecipes(recipeData);
       setSearchInput("");
     } catch (err) {
       console.error(err);
@@ -90,7 +92,9 @@ const SearchRecipes = () => {
         />
         <Button variant="outline-success" type="submit">Go!</Button>
       </Form>
-    <RecipeCards/>
+      {searchedRecipes.map(data => {
+        return <RecipeCards key={data.recipeId} recipeId={data.recipeId} recipeName={data.recipeName} recipeLink={data.recipeLink}/>
+      })}
     <h1> "recipes here!" </h1>
     </div>
   );
