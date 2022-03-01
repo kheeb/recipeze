@@ -40,8 +40,8 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <NavBar/>
-        <div className="flex-column justify-center align-center min-100-vh bg-primary">
-        </div>
+        {/* <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        </div> */}
         <Route exact path = "/" component = {SearchRecipes}/>
 
       </Router>
