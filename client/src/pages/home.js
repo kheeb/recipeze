@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
 import RecipeCards from "../components/RecipeCards";
 import Auth from "../utils/auth";
-import { searchRecipes } from "../utils/api";
+import { deleteRecipe, searchRecipes } from "../utils/api";
 import { saveRecipeIds, getSavedRecipeIds } from "../utils/localStorage";
 import { v4 as uuidv4 } from "uuid";
 import { useMutation } from '@apollo/client';
@@ -102,6 +102,7 @@ const SearchRecipes = () => {
           recipeLink={data.recipeLink}
           photoLink={data.photoLink}
           loggedIn={Auth.loggedIn()}
+          handleSave={handleSaveRecipe()}
         />
       )})}
       <h1> "recipes here!" </h1>
