@@ -25,12 +25,12 @@ const typeDefs = gql`
     # dishType:[String]
     # days:[String]
   }
-  type Ingredient{
-    text:String!
-    quantity:Int,
-    measure:String
-    weight:Int
-  }
+  # type Ingredient{
+  #   text:String!
+  #   quantity:Int,
+  #   measure:String
+  #   weight:Int
+  # }
 
   type Auth {
     token: ID!
@@ -54,13 +54,13 @@ const typeDefs = gql`
     # days:[String]
   }
 
-  input IngredientInput{
-    text:String!
-    quantity:Int,
-    measure:String
-    weight:Int
-
-  }
+  # input IngredientInput{
+  #   text:String!
+  #   quantity:Int,
+  #   measure:String
+  #   weight:Int
+# 
+  # }
   type Query {
     users: [User]
     user(id: ID!): User

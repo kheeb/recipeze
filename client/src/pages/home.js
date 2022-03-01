@@ -62,8 +62,7 @@ const SearchRecipes = () => {
       image: photoLink,
       url: recipeLink
     }
-    console.log(recipeToSave)
-
+    console.log(recipeToSave);
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -72,16 +71,21 @@ const SearchRecipes = () => {
     }
 
     try {
-      const response = await addSavedRecipe(recipeToSave, token);
-
+      const response = await addSavedRecipe({
+        variables: {
+          recipe:recipeToSave
+        }
+      });
+      console.log(response);
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
 
       // if recipe successfully saves to user's account, save recipe id to state
-      setSavedRecipeIds([...savedRecipeIds, recipeToSave.recipeId]);
+      // setSavedRecipeIds([...savedRecipeIds, recipeToSave.recipeId]);
     } catch (err) {
-      console.log(JSON.parse(JSON.stringify(err)));
+      console.log(JSON.parse(JSON.stringify(err)))
+      // console.error(err);
     }
   };
 

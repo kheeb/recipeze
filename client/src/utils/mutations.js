@@ -23,28 +23,30 @@ export const ADD_USER = gql`
   }
 `;
 export const SAVE_RECIPE = gql`
-  mutation saveRecipe($recipe:RecipeInput!){
-  saveRecipe(recipe: $recipe){
-    username
-    savedRecipes{
-      recipeId
-      label
+  mutation saveRecipe(
+    $recipe: RecipeInput!
+    ) {
+    saveRecipe(recipe: $recipe) {
+      _id
+      username
+      email
+      #    savedRecipes{
+      #      recipeId
+      #      label
+      #  }
     }
   }
-}
-
-
 `;
 export const REMOVE_RECIPE = gql`
-    mutation removeRecipe($recipeId: String!) {
-        removeRecipe(recipeId:$recipeId) {
-            _id
-            username
-            email
-            savedRecipes{
-              recipeId
-              label
-              }
-        }
-}
+  mutation removeRecipe($recipeId: String!) {
+    removeRecipe(recipeId: $recipeId) {
+      _id
+      username
+      email
+      savedRecipes {
+        recipeId
+        label
+      }
+    }
+  }
 `;
