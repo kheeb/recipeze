@@ -37,7 +37,7 @@ const typeDefs = gql`
     user: User
   }
     input RecipeInput{
-      label: String!
+    label: String!
     image: String
     recipeId: String!
     # source:String
