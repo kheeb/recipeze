@@ -102,7 +102,7 @@ const SearchRecipes = () => {
           recipeLink={data.recipeLink}
           photoLink={data.photoLink}
           loggedIn={Auth.loggedIn()}
-          handleSave={handleSaveRecipe()}
+          handleSave={handleSaveRecipe}
         />
       )})}
       <h1> "recipes here!" </h1>
