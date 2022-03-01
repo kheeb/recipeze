@@ -38,7 +38,7 @@ console.log(userData);
     } catch (err) {
       console.error(JSON.parse(JSON.stringify(err)));
     }
-    window.location.reload()
+    // window.location.reload()
   };
 
   // if data isn't here yet, say so
@@ -50,7 +50,7 @@ console.log(userData);
     <div>
        <div fluid className='text-light bg-dark'>
         <Container>
-          <h1>Viewing saved books!</h1>
+          <h1>My saved recipes!</h1>
         </Container>
       </div>
       <Container>

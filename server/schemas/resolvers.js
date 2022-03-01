@@ -11,8 +11,6 @@ const resolvers = {
     },
   
     me: async (parent, args, context) => {
-      console.log('Hello World')
-      console.log(context.user)
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("recipes");
       }
@@ -61,6 +59,7 @@ const resolvers = {
       }
     },
     removeRecipe: async (parent, { recipeId }, context) => {
+      console.log(context.user)
       if(context.user) {
         const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id },
