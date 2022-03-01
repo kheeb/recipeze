@@ -93,17 +93,17 @@ const SearchRecipes = () => {
           Go!
         </Button>
       </Form>
-      {searchedRecipes.map((data) => {
+      {searchedRecipes.map(data => {
         return (
-          <RecipeCards
-            key={data.recipeId}
-            recipeId={data.recipeId}
-            recipeName={data.recipeName}
-            recipeLink={data.recipeLink}
-            photoLink={data.photoLink}
-          />
-        );
-      })}
+        <RecipeCards
+          key={data.recipeId}
+          recipeId={data.recipeId}
+          recipeName={data.recipeName}
+          recipeLink={data.recipeLink}
+          photoLink={data.photoLink}
+          loggedIn={Auth.loggedIn()}
+        />
+      )})}
       <h1> "recipes here!" </h1>
     </div>
   );
