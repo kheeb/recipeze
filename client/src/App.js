@@ -42,6 +42,8 @@ function App() {
       <Router>
         <NavBar/>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        <Route exact path = "/" component = {SearchRecipes}/>
+        <Route exact path="/saved" component = {SavedRecipes}/>
         </div>
        
 

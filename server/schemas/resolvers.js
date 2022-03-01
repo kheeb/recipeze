@@ -9,7 +9,10 @@ const resolvers = {
     user: async (parent, { id }) => {
       return await User.findById(id).populate("recipes");
     },
+  
     me: async (parent, args, context) => {
+      console.log('Hello World')
+      console.log(context.user)
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("recipes");
       }
