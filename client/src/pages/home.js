@@ -51,11 +51,18 @@ const SearchRecipes = () => {
   };
 
   // create function to handle saving a recipe to our database
-  const handleSaveRecipe = async (recipeId) => {
+  const handleSaveRecipe = async (recipeId, recipeName, photoLink, recipeLink) => {
     // find the recipe in `searchedRecipes` state by the matching id
-    const recipeToSave = searchedRecipes.find(
-      (recipe) => recipe.recipeId === recipeId
-    );
+    // const recipeToSave = searchedRecipes.find(
+    //   (recipe) => recipe.recipeId === recipeId
+    // );
+    const recipeToSave = {
+      recipeId,
+      label: recipeName,
+      image: photoLink,
+      url: recipeLink
+    }
+    console.log(recipeToSave)
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -74,7 +81,7 @@ const SearchRecipes = () => {
       // if recipe successfully saves to user's account, save recipe id to state
       setSavedRecipeIds([...savedRecipeIds, recipeToSave.recipeId]);
     } catch (err) {
-      console.error(err);
+      console.log(JSON.parse(JSON.stringify(err)));
     }
   };
 
