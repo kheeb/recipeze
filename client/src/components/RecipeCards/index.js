@@ -1,18 +1,16 @@
 //Recipe Cards
 import { Card, Button, Form } from 'react-bootstrap';
 
-// TODO: Replace desconstructed recipe keys with working keys and also replace connected keys in return section
-export default function recipeCard({ recipeName, photo, altDesc }) {
+export default function recipeCard({ recipeName, photoLink, altDesc, loggedIn, recipeSaved }) {
   return (
     <Card>
       <Card.Title>{recipeName}</Card.Title>
-      <Card.Img src={photo} alt={altDesc} />
+      <Card.Img src={photoLink} alt={altDesc} />
       <Card.Body>
-        {/* // TODO: Change href ternary with variable that shows if the recipe is already saved to the user */}
-        <Button href={('Variable for if saved to user') ? "HREF for saving to user's schedule" : 'HREF for saving to user'}>Save</Button>
+        <Button href={(!recipeSaved) ? 'HREF for saving to user' : 'HREF for updating existing saved recipe'} className={(!loggedIn) ? 'invisible' : 'visible'}>Save</Button>
       </Card.Body>
       {/* // TODO: Add bootstrap styling or custom styling into ternary to show button if saved to user profile */}
-      <Form.Select>
+      <Form.Select className={(!loggedIn) ? 'invisible' : 'visible'}>
         <option>Day of the week</option>
         <option value={'Sunday'}>Sunday</option>
         <option value={'Monday'}>Monday</option>
