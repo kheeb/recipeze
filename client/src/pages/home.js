@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, FormControl } from "react-bootstrap";
+import { Button, Form, FormControl, Container, Row, Col } from "react-bootstrap";
 import RecipeCards from "../components/RecipeCards";
 import Auth from "../utils/auth";
 import { searchRecipes } from "../utils/api";
@@ -90,23 +90,41 @@ const SearchRecipes = () => {
     <>
     <style type="text/css">
                     {`
+
+    body {
+      background: radial-gradient(#334e43, #cee4ce); 
+    }
+    
     .btn-flat {
       background-color: #598787;
       
     }
 
     .btn-xxl {
-      padding: 1rem 1.5rem;
+      padding: 1rem 1.rem;
       font-size: 1.5rem;
       border-radius: 50px;
       color: #f1d261;
       border-color: #f1d261; 
-      border-width: 5px;
+      border-width: 3px;
       font-family: 'Caveat', cursive;
     }
+
+    .form-control {
+      background-color:
+      width: 75%;
+      border-bottom: 3px solid #95a687;
+      border-top: 3px solid #95a687;
+    }
+
+    .custom-border {
+      border-bottom: 4px solid #f1d261;
+    }
     `}
-                  </style>
-    <Form className="d-flex" onSubmit={handleFormSubmit}>
+      </style>
+      
+      <div className="col d-flex justify-content-center text-center custom-border">
+      <Form className="d-flex justify-content-center w-75 mb-1" onSubmit={handleFormSubmit}>
         <FormControl
           type="search"
           name="queryField"
@@ -119,9 +137,13 @@ const SearchRecipes = () => {
           Go!
         </Button>
       </Form>
+      </div>
+      <div className="mt-3 justify-content-center text-center">
       {searchedRecipes.map(data => {
         return (
-        <RecipeCards
+          <Container fluid="md">
+  <Row>
+    <Col><RecipeCards
           key={data.recipeId}
           recipeId={data.recipeId}
           recipeName={data.recipeName}
@@ -129,8 +151,13 @@ const SearchRecipes = () => {
           photoLink={data.photoLink}
           loggedIn={Auth.loggedIn()}
           handleSave={handleSaveRecipe}
-        />
+        /></Col>
+  </Row>
+</Container>
+        
       )})}
+      </div>
+      
       </>
     </div>
     

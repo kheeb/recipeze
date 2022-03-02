@@ -13,7 +13,7 @@ function NavBar() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="NavBar mb-3">
+    <div className="NavBar mb-2">
     <>
       <style type="text/css">
     {`
@@ -24,14 +24,14 @@ function NavBar() {
 
     `}
   </style>
-        <Navbar variant="custom" expand="lg" className="">
+        <Navbar expand="lg" className="navbar-custom">
           <Container fluid>
             <Navbar.Brand href="/">
               <img
                 alt=""
                 src={recipeZeLogo}
-                width="60"
-                height="60"
+                width="55"
+                height="55"
                 className="d-inline-block align-top"
               />{" "}
 

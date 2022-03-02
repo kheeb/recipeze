@@ -45,11 +45,44 @@ const SavedRecipes = () => {
   }
 
   return (
-    <div>
+    <>
+    <style type="text/css">
+    {`
+
+    body {
+      background: radial-gradient(#334e43, #cee4ce); 
+    }
+    
+    
+
+    h2 {
+      font-family: 'Catamaran', sans-serif;
+      padding: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.6rem;
+      font-size: 1.2rem;
+      border-top: 3px solid #f1d261;
+      border-bottom: 3px solid #f1d261;
+      border-width: 10px;
+    }
+
+    
+
+    .card-body-custom {
+      background: linear-gradient(to bottom, #95a687, #cee4ce)
+      
+    }
+
+    .card-footer {
+      background-color: #f1d261;
+    }
+    `}
+  </style>
+  <div>
       <Container>
-        <h2>
+        <h2 className="text-center" style={{}}>
           {userData.savedRecipes.length
-            ? `Viewing ${userData.savedRecipes.length} saved ${userData.savedRecipes.length === 1 ? 'recipe' : 'recipes'}:`
+            ? `You have ${userData.savedRecipes.length} saved ${userData.savedRecipes.length === 1 ? 'recipe' : 'recipes'}:`
             : 'You have no saved recipes!'}
         </h2>
         <div>
@@ -66,10 +99,13 @@ const SavedRecipes = () => {
             );
           })}
         </div>
+        
       </Container>
       {/* <ProfileFavorites onDeleteRecipe={handleDeleteRecipe} />
       <ProfileWeek /> */}
     </div>
+    </>
+    
   );
 };
 
