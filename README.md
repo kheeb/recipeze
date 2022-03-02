@@ -1,13 +1,13 @@
 # recipeze
 
 ## Description
-An app for finding recipes and planning meals for the week.
+An app for finding recipes and curating your digital cookbook.
 
 ## User Story
 ```
 AS A human with daily decision fatigue regarding what to eat
 I WANT a place to collect recipe ideas
-SO THAT I can easily plan my week’s meals
+SO THAT I can easily keep track of and plan my meals
 ```
 
 ## Table of Contents
@@ -31,11 +31,13 @@ SO THAT I can easily plan my week’s meals
   6. Run `npm run seed && build` and then `npm run develop`
 it 
 ## Usage
-View the GIF below to see our app in action:
+View our app below to see our app in action:
 
-![Visual alt description](Path to visual here)
+![Screen Shot 2022-03-02 at 1 25 10 PM](https://user-images.githubusercontent.com/93744725/156424641-f00d3f5b-25d1-4acd-9c4c-cd791133a52f.png)
 
-Please click [here](link to video demo here) for a video demo.
+Please click [here](https://drive.google.com/file/d/1tr2ZSDxuNaN7dYkTa4VLmYDbbRc8N73c/view) or scan the QR below for a video demo.
+
+![image](https://user-images.githubusercontent.com/93744725/156423435-1ae6f233-9fda-45d8-9d98-875dda6b1ae2.png)
 
 ## Link
 Visit the deployed site at: (https://kara-heeb-recipeze.herokuapp.com/)
