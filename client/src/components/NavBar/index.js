@@ -2,9 +2,10 @@
 //Navbar
 import React, { useState } from "react";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import SignUp from "../SignUp";
-import LogIn from "../Login";
+import { Link } from 'react-router-dom';
+import SignUp from '../SignUp'
+import LogIn from '../Login'
+import recipeZeLogo from '../../assets/recipeZe-logo.png';
 
 import Auth from "../../utils/auth";
 
@@ -28,12 +29,12 @@ function NavBar() {
             <Navbar.Brand href="/">
               <img
                 alt=""
-                src="/logo.svg"
+                src={recipeZeLogo}
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
               />{" "}
-              
+
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
