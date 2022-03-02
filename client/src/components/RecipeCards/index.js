@@ -7,6 +7,11 @@ export default function recipeCard({ recipeId, recipeName, recipeLink, photoLink
     <>
   <style type="text/css">
     {`
+
+    body {
+
+    }
+    
     .btn-flat {
       background-color: #598787;
       
@@ -42,18 +47,20 @@ export default function recipeCard({ recipeId, recipeName, recipeLink, photoLink
     .card-footer {
       background-color: #f1d261;
     }
+
+    .custom {
+      border-bottom: 3px solid #f1d261;
+    }
     `}
   </style>
 <div className="mt-3 col d-flex justify-content-center text-center">
-    <Card data-recipeid={recipeId} style={{width: '30rem'}} className="shadow card-body-custom border-dark border-2">
+    <Card data-recipeid={recipeId} style={{width: '32rem'}} className="shadow card-body-custom border-dark border-2">
       <Card.Img varient="top" src={photoLink} alt={`${recipeName} photo`} />
-      
       <Card.Title className="card-title">{recipeName}</Card.Title>
-      
-      <Card.Body className="">
+      <Card.Body>
         <Button
           onClick={() => { handleSave(recipeId, recipeName, photoLink, recipeLink) }}
-          className={(!loggedIn) ? 'd-none' : 'flat'} >Save</Button>
+          className={(!loggedIn) ? 'd-none' : 'flat' } size="xxl">Save</Button>
         <Button href={recipeLink} target='_blank' className="flat" size="xxl" >Link</Button>
       </Card.Body>
       <Card.Footer className="mt-2 card-footer"></Card.Footer>

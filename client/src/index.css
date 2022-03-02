@@ -9,7 +9,13 @@ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
-  background: linear-gradient(to bottom, #95a687, #cee4ce); 
+  /* background: radial-gradient(#334e43, #cee4ce);
+  background-image: url("./assets/recipeZe-logo.png"); */
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  background-image: linear-gradient(rgba(149, 166, 135, 0.5), rgba(206, 228, 206, 0.5)),
+                  url("./assets/recipeZe-logo.png");
+  
   /* 2 */
 }
 

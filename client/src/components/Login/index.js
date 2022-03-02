@@ -41,15 +41,46 @@ function LogIn() {
     });
   };
   return (
-<>{data ? (
+<>
+<style type="text/css">
+    {`
+
+    
+    
+    .btn-flat {
+      background-color: #598787;
+      
+    }
+
+    .btn-xxl {
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      color: #f1d261;
+      border-color: #f1d261; 
+      border-width: 5px;
+    }
+    .custom-label {
+      font-family: 'Catamaran', sans-serif;
+      padding: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.6rem;
+      font-size: 1.2rem;
+      border-top: 3px solid #f1d261;
+      border-bottom: 3px solid #f1d261;
+      border-width: 10px;
+    }
+    `}
+  </style>
+{data ? (
       <p>
         Success! You may now head back to the homepage.
       </p>
-    ) :(<Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+    ) :(<Form noValidate validated={validated} onSubmit={handleFormSubmit} className="text-center">
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
-        <Form.Group>
+        <Form.Group className="text-center custom-label mb-4">
           <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
             type='text'
@@ -62,7 +93,7 @@ function LogIn() {
           <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="text-center custom-label">
           <Form.Label htmlFor='password'>Password</Form.Label>
           <Form.Control
             type='password'
@@ -74,7 +105,7 @@ function LogIn() {
           />
           <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
         </Form.Group>
-        <Button
+        <Button className="mt-3 flat" size="xxl"
           disabled={!(userFormData.email && userFormData.password)}
           type='submit'
           variant='success'>
