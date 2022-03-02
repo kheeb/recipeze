@@ -20,21 +20,46 @@ export default function recipeCard({ recipeId, recipeName, recipeLink, photoLink
       border-color: #f1d261; 
       border-width: 5px;
     }
+
+    .card-title {
+      font-family: 'Catamaran', sans-serif;
+      padding: 1.2rem;
+      font-weight: bold;
+      letter-spacing: 0.6rem;
+      font-size: 1.2rem;
+      border-top: 3px solid #f1d261;
+      border-bottom: 3px solid #f1d261;
+      border-width: 10px;
+    }
+
+    
+
+    .card-body-custom {
+      background: linear-gradient(to bottom, #95a687, #cee4ce)
+      
+    }
+
+    .card-footer {
+      background-color: #f1d261;
+    }
     `}
   </style>
-<div class="mt-3 text-center">
-    <Card data-recipeid={recipeId} style={{width: '25rem'}} className="shadow">
+<div className="mt-3 col d-flex justify-content-center text-center">
+    <Card data-recipeid={recipeId} style={{width: '30rem'}} className="shadow card-body-custom border-dark border-2">
       <Card.Img varient="top" src={photoLink} alt={`${recipeName} photo`} />
-      <Card.Title >{recipeName}</Card.Title>
-      <hr className="hr-custom"></hr>
-      <Card.Body>
+      
+      <Card.Title className="card-title">{recipeName}</Card.Title>
+      
+      <Card.Body className="">
         <Button
           onClick={() => { handleSave(recipeId, recipeName, photoLink, recipeLink) }}
-          className={(!loggedIn) ? 'invisible' : 'visible'} className="flat" size="xxl" class="">Save</Button>
-        <Button href={recipeLink} target='_blank' className="flat" size="xxl" class="">Link</Button>
+          className={(!loggedIn) ? 'd-none' : 'flat'} >Save</Button>
+        <Button href={recipeLink} target='_blank' className="flat" size="xxl" >Link</Button>
       </Card.Body>
+      <Card.Footer className="mt-2 card-footer"></Card.Footer>
     </Card>
     </div>
+
     </>
     
   )
