@@ -9,6 +9,7 @@ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
+  background: linear-gradient(to bottom, #95a687, #cee4ce); 
   /* 2 */
 }
 
