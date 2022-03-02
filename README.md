@@ -1,13 +1,13 @@
 # recipeze
 
 ## Description
-An app for finding recipes and planning meals for the week.
+An app for finding recipes and curating your digital cookbook
 
 ## User Story
 ```
 AS A human with daily decision fatigue regarding what to eat
 I WANT a place to collect recipe ideas
-SO THAT I can easily plan my week’s meals
+SO THAT I can easily keep track of and plan my meals
 ```
 
 ## Table of Contents
