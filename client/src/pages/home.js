@@ -91,7 +91,7 @@ const SearchRecipes = () => {
     <style type="text/css">
                     {`
 
-                    body {
+    body {
       background: radial-gradient(#334e43, #cee4ce); 
     }
     
@@ -101,7 +101,7 @@ const SearchRecipes = () => {
     }
 
     .btn-xxl {
-      padding: 1rem 1.3rem;
+      padding: 1rem 1.rem;
       font-size: 1.5rem;
       border-radius: 50px;
       color: #f1d261;
@@ -123,8 +123,8 @@ const SearchRecipes = () => {
     `}
       </style>
       
-      <div className="mt-3 col d-flex justify-content-center text-center custom-border">
-      <Form className="d-flex justify-content-center w-50 mb-3" onSubmit={handleFormSubmit}>
+      <div className="col d-flex justify-content-center text-center custom-border">
+      <Form className="d-flex justify-content-center w-75 mb-1" onSubmit={handleFormSubmit}>
         <FormControl
           type="search"
           name="queryField"
