@@ -30,8 +30,8 @@ function NavBar() {
               <img
                 alt=""
                 src={recipeZeLogo}
-                width="30"
-                height="30"
+                width="60"
+                height="60"
                 className="d-inline-block align-top"
               />{" "}
 
