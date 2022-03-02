@@ -7,6 +7,7 @@ import { saveRecipeIds, getSavedRecipeIds } from "../utils/localStorage";
 import { v4 as uuidv4 } from "uuid";
 import { useMutation } from '@apollo/client';
 
+
 import { SAVE_RECIPE } from "../utils/mutations";
 const SearchRecipes = () => {
   const [addSavedRecipe] = useMutation(SAVE_RECIPE);
@@ -85,7 +86,26 @@ const SearchRecipes = () => {
 
   return (
     <div>
-      <Form className="d-flex" onSubmit={handleFormSubmit}>
+    <>
+    <style type="text/css">
+                    {`
+    .btn-flat {
+      background-color: #598787;
+      
+    }
+
+    .btn-xxl {
+      padding: 1rem 1.5rem;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      color: #f1d261;
+      border-color: #f1d261; 
+      border-width: 5px;
+      font-family: 'Caveat', cursive;
+    }
+    `}
+                  </style>
+    <Form className="d-flex" onSubmit={handleFormSubmit}>
         <FormControl
           type="search"
           name="queryField"
@@ -94,7 +114,7 @@ const SearchRecipes = () => {
           aria-label="Search"
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <Button variant="outline-success" type="submit">
+        <Button variant="flat" size="xxl" type="submit">
           Go!
         </Button>
       </Form>
@@ -110,7 +130,10 @@ const SearchRecipes = () => {
           handleSave={handleSaveRecipe}
         />
       )})}
+      </>
     </div>
+    
+      
   );
 };
 
